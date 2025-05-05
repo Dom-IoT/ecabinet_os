@@ -16,9 +16,8 @@ void leds_matrix_setup() {
 
 
 void set_leds_color(int placard, CRGB color) {
-    int first = placard * leds_par_placard;
-    for (int x = first; x < first + leds_par_placard; x++) {
-        for (int y = first; y < first + leds_par_placard; y++) {
+    for (int x = 0; x < 8 ; x++) {
+        for (int y = 0; y < 8 ; y++) {
             leds[x + y*MATRIX_SIZE] = color;
         }
     }
@@ -77,5 +76,10 @@ void show_removal(int placard) {
 
 void signal_placement(int placard) {
     set_leds_color(placard, CRGB::Purple);
+    durations[placard] = millis() + 2000;
+}
+
+void show_unknown_placement(int placard){
+    set_leds_color(placard, CRGB::Orange);
     durations[placard] = millis() + 2000;
 }

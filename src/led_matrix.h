@@ -22,3 +22,4 @@ void show_good_placement(int placard);
 void show_bad_placement(int placard);
 void show_removal(int placard);
 void signal_placement(int placard);
+void show_unknown_placement(int placard);

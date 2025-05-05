@@ -3,7 +3,7 @@
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-IPAddress server_mqtt(192, 168, 0, 90);
+IPAddress server_mqtt(192,168, 113, 32);
 const int mqtt_port = 1883;
 
 void subscribe_mqtt_topic(char *topic)
@@ -20,7 +20,7 @@ void mqtt_reconnect()
     char client_id[5];
     int cabinet_id = get_cabinet_id();
     sprintf(client_id, "m5-%d", cabinet_id);
-    if (client.connect(client_id))
+    if (client.connect(client_id, "board", "board"))
     {
       char topic[19];
 
@@ -62,6 +62,8 @@ void mqtt_callback(char *topic, byte *payload, unsigned int length)
     else if (msg == "SIGNAL")
     {
       signal_placement(i);
+    }else if (msg=="UNKNOWN"){
+      show_unknown_placement(i);
     }
   }
   else
