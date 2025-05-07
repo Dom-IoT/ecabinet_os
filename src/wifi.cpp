@@ -1,7 +1,7 @@
 #include "wifi.h"
 
-const char *ssid = "S20Arnaud";
-const char *password = "@loa2019";
+const char *ssid = "";
+const char *password = "";
 
 void wifi_setup()
 {
